@@ -40,6 +40,19 @@ _It might take more than 10 minutes to write the image to the microSD card, take
 
 [Setup and First Boot](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-2gb-devkit#setup)
 
+### SSH Connection
+
+Once you have log-in locally on Jetson Nano, you can establish a SSH connection from another computer.
+
+From another computer in thesame network:
+
+`ifconfig`
+Look for he IP address with the tag `inet` related to your connection
+
+Ouput example:
+`wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet XXX.X.XX  netmask XXX.XXX.XXX.X  broadcast XXX.XXX.X.XXX
+        inet6 ...<`
 
 ### Virtual Network Computing
 
@@ -48,3 +61,19 @@ _VNC (Virtual Network Computing) enables you to control your Jetson developer ki
 In a few works, you can get remote access to your Jetson nano
 
 [Remote Control](https://developer.nvidia.com/embedded/learn/tutorials/vnc-setup)
+
+## Time to code
+
+[Tutorials Rsources](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-2gb-devkit#next)
+
+### Your First Jetson Container
+
+_A container is an executable unit of software where an application and its run time dependencies can all be packaged together into one entity. Since everything needed by the application is packaged with the application itself, containers provide a degree of isolation from the host and make it easy to deploy and install the application without having to worry about the host environment and application dependencies._
+
+- [Containers](https://developer.nvidia.com/embedded/learn/tutorials/jetson-container)
+- [AI-track Docker](link to ai track)
+
+## Jetson AI Fundamentals Course
+
+
+ 
