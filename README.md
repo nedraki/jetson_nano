@@ -181,3 +181,23 @@ Example:
 
 It is also possible to stream and read the video output using VLC player but the latency will be higher than using GStreamer. For more details, [refere to the official docs](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md).
 
+### Running examples:
+
+1. Run the docker container
+
+`~/nvdli-data/jetson-inference$ docker/run.sh`
+
+2. Run the examples
+
+`/jetson-inference/python/examples# ./detectnet.py /dev/video0 rtp://192.168.1.9:1234`
+
+3. Activate streaming on host:
+
+`sudo gst-launch-1.0 -v udpsrc port=1234 \
+ caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! \
+ rtph264depay ! decodebin ! videoconvert ! autovideosink`
+
+
+
+
+
