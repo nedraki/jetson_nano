@@ -42,7 +42,23 @@ _It might take more than 10 minutes to write the image to the microSD card, take
 
 ### SSH Connection
 
-Once you have log-in locally on Jetson Nano, you can establish a SSH connection from another computer.
+***Using USB cable***
+
+1. Connect the Jetson Nano to your computer via USB
+2. Connect via SSH:
+2.1 `ssh nvidia@192.168.55.1`
+
+The ip address `192.168.55.1` is by default the port for SSH connections via USB; for wireless connection, it is necesary to verify the wlan address asigned to the Jetson Nano.
+
+`ifconfig`
+
+Look for he IP address with the tag `inet` related to your connection
+
+Ouput example:
+
+`wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet XXX.X.XX  netmask XXX.XXX.XXX.X  broadcast XXX.XXX.X.XXX
+        inet6 ...<`
 
 ***From another computer in the same network:***
 
@@ -62,7 +78,7 @@ Finally, you can connect remotely:
 
 For example:
 
-`ssh nvidia@192.168.1.16`
+`ssh <name_of_your_jetson_nano>@192.168.1.16`
 
 ***See more details about how to stream video while using ssh***
 
@@ -124,6 +140,14 @@ Container with initial notebooks
     --device /dev/video0 \ 
     nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.4.4`
 
+
+To know the network host (remote pc IP):
+
+`hostname -I`
+
+Example
+`<network host> = 192.168.1.9`
+
 ***Tip***: The docker volume should be run with the tag that corresponds to your hardware
 
 ### Hello AI world setup in headless mode: 
@@ -152,8 +176,7 @@ RTP network streams are broadcast to a particular host or multicast group over U
 
 `sudo gst-launch-1.0 -v udpsrc port=1234 \
  caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! \
- rtph264depay ! decodebin ! videoconvert ! autovideosink
-`
+ rtph264depay ! decodebin ! videoconvert ! autovideosink`
 
 It is also possible to stream and read the video output using VLC player but the latency will be higher than using GStreamer. For more details, [refere to the official docs](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md).
 
