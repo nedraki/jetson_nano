@@ -141,13 +141,6 @@ Container with initial notebooks
     nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.4.4`
 
 
-To know the network host (remote pc IP):
-
-`hostname -I`
-
-Example
-`<network host> = 192.168.1.9`
-
 ***Tip***: The docker volume should be run with the tag that corresponds to your hardware
 
 ### Hello AI world setup in headless mode: 
@@ -171,6 +164,14 @@ RTP network streams are broadcast to a particular host or multicast group over U
 2. Initiate streming on Jetson device
 
 `video-viewer /dev/video0 rtp://<remote_pc_ip>:1234`
+
+To know the remote pc IP:
+
+`hostname -I`
+
+Example:
+
+`<network host> = 192.168.1.9`
 
 3. Run pipeline on remote host (The pc connected to Jetson via ssh)
 
