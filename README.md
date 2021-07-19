@@ -171,7 +171,7 @@ RTP network streams are broadcast to a particular host or multicast group over U
 2. Initiate streming on Jetson device
 
 `video-viewer /dev/video0 rtp://<remote_pc_ip>:1234`
-`
+
 3. Run pipeline on remote host (The pc connected to Jetson via ssh)
 
 `sudo gst-launch-1.0 -v udpsrc port=1234 \
